@@ -8,5 +8,6 @@
     "project_short_description": "CircleCI build image I use for multi-language builds",
     "project_slug": "docker-circleci",
     "type_of_github_repo": "public",
+    "full_docker_image_name": "apiology/circleci",
     "version": "0.1.0"
 }
