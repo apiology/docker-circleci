@@ -15,7 +15,10 @@ export PRINT_HELP_PYSCRIPT
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-default: test ## run default typechecking and tests
+build: ## build docker image
+	docker build .
+
+default: build test ## run default typechecking and tests
 
 clean: ## remove all built artifacts
 
