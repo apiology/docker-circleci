@@ -64,6 +64,15 @@ ensure_ruby_version() {
 ensure_bundle() {
   bundle --version >/dev/null 2>&1 || gem install bundler
   bundle install
+  # https://bundler.io/v2.0/bundle_lock.html#SUPPORTING-OTHER-PLATFORMS
+  #
+  # "If you want your bundle to support platforms other than the one
+  # you're running locally, you can run bundle lock --add-platform
+  # PLATFORM to add PLATFORM to the lockfile, force bundler to
+  # re-resolve and consider the new platform when picking gems, all
+  # without needing to have a machine that matches PLATFORM handy to
+  # install those platform-specific gems on.'
+  bundle lock --add-platform x86_64-darwin-20 x86_64-linux
 }
 
 latest_python_version() {
@@ -150,6 +159,7 @@ ensure_python_build_requirements() {
   ensure_dev_library zlib.h zlib zlib1g-dev
   ensure_dev_library bzlib.h bzip2 libbz2-dev
   ensure_dev_library openssl/ssl.h openssl libssl-dev
+  ensure_dev_library ffi.h libffi libffi-dev
 }
 
 # You can find out which feature versions are still supported / have
