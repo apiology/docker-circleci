@@ -62,6 +62,23 @@ latest_ruby_version() {
   rbenv install --list 2>/dev/null | grep "^${major_minor}."
 }
 
+ensure_dev_library() {
+  header_file_name=${1:?header file name}
+  homebrew_package=${2:?homebrew package}
+  apt_package=${3:-${homebrew_package}}
+  if ! [ -f /usr/include/"${header_file_name}" ] && \
+      ! [ -f /usr/include/x86_64-linux-gnu/"${header_file_name}" ] && \
+      ! [ -f /usr/local/include/"${header_file_name}" ] && \
+      ! [ -f  /usr/local/opt/"${homebrew_package}"/include/"${header_file_name}" ]
+  then
+    install_package "${homebrew_package}" "${apt_package}"
+  fi
+}
+
+ensure_ruby_build_requirements() {
+  ensure_dev_library readline/readline.h libreadline libreadline-dev
+}
+
 # You can find out which feature versions are still supported / have
 # been release here: https://www.ruby-lang.org/en/downloads/
 ensure_ruby_versions() {
@@ -71,7 +88,7 @@ ensure_ruby_versions() {
 
   echo "Latest Ruby versions: ${ruby_versions}"
 
-  # ensure_ruby_build_requirements
+  ensure_ruby_build_requirements
 
   for ver in $ruby_versions
   do
@@ -149,19 +166,6 @@ install_package() {
   else
     >&2 echo "Teach me how to install packages on this plaform"
     exit 1
-  fi
-}
-
-ensure_dev_library() {
-  header_file_name=${1:?header file name}
-  homebrew_package=${2:?homebrew package}
-  apt_package=${3:-${homebrew_package}}
-  if ! [ -f /usr/include/"${header_file_name}" ] && \
-      ! [ -f /usr/include/x86_64-linux-gnu/"${header_file_name}" ] && \
-      ! [ -f /usr/local/include/"${header_file_name}" ] && \
-      ! [ -f  /usr/local/opt/"${homebrew_package}"/include/"${header_file_name}" ]
-  then
-    install_package "${homebrew_package}" "${apt_package}"
   fi
 }
 
