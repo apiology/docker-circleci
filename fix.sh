@@ -222,11 +222,11 @@ ensure_shellcheck() {
   fi
 }
 
-ensure_rbenv
+# ensure_rbenv
 
-ensure_ruby_version
+# ensure_ruby_version
 
-ensure_bundle
+# ensure_bundle
 
 ensure_pyenv
 
