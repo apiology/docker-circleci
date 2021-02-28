@@ -76,7 +76,7 @@ ensure_dev_library() {
 }
 
 ensure_ruby_build_requirements() {
-  ensure_dev_library readline/readline.h libreadline libreadline-dev
+  ensure_dev_library readline/readline.h readline libreadline-dev
 }
 
 # You can find out which feature versions are still supported / have
