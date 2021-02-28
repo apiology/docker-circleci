@@ -250,7 +250,7 @@ ensure_rbenv
 
 ensure_ruby_versions
 
-ensure_bundle
+# ensure_bundle
 
 ensure_pyenv
 
