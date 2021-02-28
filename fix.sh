@@ -112,6 +112,11 @@ ensure_bundle() {
   bundle lock --add-platform x86_64-darwin-20 x86_64-linux
 }
 
+set_ruby_local_version() {
+  latest_ruby_version="$(cut -d' ' -f1 <<< "${ruby_versions}")"
+  echo "${latest_ruby_version}" > .ruby-version
+}
+
 latest_python_version() {
   major_minor=${1}
   # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
@@ -250,7 +255,9 @@ ensure_rbenv
 
 ensure_ruby_versions
 
-# ensure_bundle
+set_ruby_local_version
+
+ensure_bundle
 
 ensure_pyenv
 
