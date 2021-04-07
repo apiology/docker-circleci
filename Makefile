@@ -22,7 +22,7 @@ default: build test ## run default typechecking and tests
 
 clean: ## remove all built artifacts
 
-test: ## run tests quickly
+test: build ## run tests quickly
 
 quality:  ## run precommit quality checks
 	bundle exec overcommit --run
