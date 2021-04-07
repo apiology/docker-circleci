@@ -87,6 +87,7 @@ jobs:
     docker:
       - image: apiology/circleci:latest
     steps:
+      - setup_remote_docker
       - set_up_environment
       - run:
           command: |
