@@ -17,6 +17,7 @@ help:
 
 build: ## build docker image
 	docker build --progress plain -t apiology/circleci .
+	docker scan --severity high apiology/circleci
 
 default: build test ## run default typechecking and tests
 
