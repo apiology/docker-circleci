@@ -16,7 +16,11 @@ help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 build: ## build docker image
-	docker build --progress plain -t apiology/circleci .
+	docker build --pull --progress plain -t apiology/circleci:latest .
+
+publish: build ## publish docker image
+	docker push apiology/circleci:latest
+
 
 default: build test ## run default typechecking and tests
 
