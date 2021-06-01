@@ -3,5 +3,8 @@ ARG DOCKER_TAG=latest
 FROM cimg/base:stable-20.04
 MAINTAINER apiology
 
+RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+RUN echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
 COPY Makefile fix.sh requirements_dev.txt Gemfile Gemfile.lock /tmp/
 RUN cd /tmp && ./fix.sh
