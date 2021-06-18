@@ -1,2 +1,9 @@
 pip==21.0.1
 yamllint==1.26.0
+# Used by child proejcts from cookiecutter-pypackage, lxml wasn't
+# precompiled for Python 3.10's betas at the time of this writing
+# (2021-06-18).  This will avoid the need to package up
+# compilers/build tools with the default CircleCI image.
+#
+# https://app.circleci.com/pipelines/github/apiology/cookiecutter-pypackage/331/workflows/fbd315fe-86f3-4349-abba-7e115e9c4b98/jobs/464
+lxml==4.6.3
