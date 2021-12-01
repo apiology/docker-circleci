@@ -4,7 +4,11 @@
 
 CircleCI build image I use for multi-language builds.
 
-To build locally, run `make`.  You can see automatic builds at
+```sh
+docker pull apiology/circleci:latest
+```
+
+To build locally, run `make`.  You can see images at
 [Docker Hub](https://hub.docker.com/repository/docker/apiology/circleci)
 
 To experiment, run:
