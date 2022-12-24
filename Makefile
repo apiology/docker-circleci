@@ -21,6 +21,7 @@ build: ## build docker image
 publish: build ## publish docker image
 	docker push apiology/circleci:latest
 
+typecheck: ## validate types in code and configuration
 
 default: build test quality ## run default typechecking, tests and quality
 
@@ -46,8 +47,6 @@ clean: ## remove all built artifacts
 test: build ## run tests quickly
 
 citest: test ## Run unit tests from CircleCI
-
-typecheck: ## validate types in code and configuration
 
 overcommit: ## run precommit quality checks
 	bundle exec overcommit --run
