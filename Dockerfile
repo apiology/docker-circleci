@@ -1,6 +1,6 @@
 ARG DOCKER_TAG=latest
 # https://circleci.com/developer/images/image/cimg/base?utm_medium=SEM&utm_source=gnb&utm_campaign=SEM-gnb-DSA-Eng-ni&utm_content=&utm_term=dynamicSearch-&gclid=EAIaIQobChMIs8LssdbP8AIV1_bICh1NXQg-EAAYASAAEgIum_D_BwE#image-tags
-FROM cimg/base:stable-20.04
+FROM cimg/base:current-20.04
 MAINTAINER apiology
 
 RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
