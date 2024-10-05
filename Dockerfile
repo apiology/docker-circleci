@@ -6,7 +6,7 @@ MAINTAINER apiology
 RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 RUN echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 
-COPY Makefile fix.sh requirements_dev.txt Gemfile Gemfile.lock /tmp/
+COPY --chmod=755 Makefile fix.sh requirements_dev.txt Gemfile Gemfile.lock /tmp/
 RUN cd /tmp && \
     ./fix.sh && \
     rm -fr /home/circleci/.pyenv/versions/*/lib/python*/test && \
