@@ -72,9 +72,9 @@ pip_install: requirements_dev.txt.installed ## Install Python dependencies
 
 Gemfile.lock: Gemfile .bundle/config
 	if [ ! -f Gemfile.lock ]; then \
-	  bundle install; \
+	  bin/bundle install; \
 	else \
-	  bundle lock; \
+	  bin/bundle lock; \
 	fi
 
 .bundle/config:
@@ -89,7 +89,7 @@ Gemfile.lock.installed: Gemfile vendor/.keep
 
 vendor/.keep: Gemfile.lock
 	make gem_dependencies
-	bundle install
+	bin/bundle install
 	touch vendor/.keep
 
 bundle_install: Gemfile.lock.installed ## Install Ruby dependencies
